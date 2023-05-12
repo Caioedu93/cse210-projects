@@ -49,7 +49,9 @@ class Program
                     break;
                 case "5":
                     done = true;
+                    Console.WriteLine("Good Bye");
                     break;
+                    
                 default:
                     Console.WriteLine("Invalid option.");
                     break;

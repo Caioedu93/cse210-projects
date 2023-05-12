@@ -23,14 +23,11 @@ class Journal
         }
     }
 
-    public void SaveToFile( string fileName)
+    public void SaveToFile( string savefileName)
     {
         
     {
-        Console.Write("Enter the file name to save the journal: ");
-        string savefileName = Console.ReadLine();
-
-        using (StreamWriter writer = new StreamWriter(fileName))
+        using (StreamWriter writer = new StreamWriter(savefileName))
         {
             foreach (Entry entry in entries)
             {
@@ -38,26 +35,23 @@ class Journal
             }
         }
 
-        Console.WriteLine($"Journal saved to {fileName}");
+        Console.WriteLine($"Journal saved to {savefileName}");
     }
         }
 
-    public void LoadFromFile(string fileName)
+    public void LoadFromFile(string loadfileName)
     {
         
     {
-        Console.Write("Enter the file name to load the journal: ");
-        string savefileName = Console.ReadLine();
-
-        if (!File.Exists(fileName))
+        if (!File.Exists(loadfileName))
         {
-            Console.WriteLine($"File {fileName} does not exist.");
+            Console.WriteLine($"File {loadfileName} does not exist.");
             return;
         }
 
         entries.Clear();
 
-        using (StreamReader reader = new StreamReader(fileName))
+        using (StreamReader reader = new StreamReader(loadfileName))
         {
             string line;
             while ((line = reader.ReadLine()) != null)
@@ -68,7 +62,7 @@ class Journal
             }
         }
 
-        Console.WriteLine($"Journal loaded from {fileName}");
+        Console.WriteLine($"Journal loaded from {loadfileName}");
     }
     }
 }
